@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.py[cod]
+
+# Frontend build
+frontend/dist/
+frontend/.vite/
+
+# Backend virtual environment
+backend/venv/
+backend/.venv/
+venv/
+.env
+
+# Environment variables
+*.env
+.env.*
+
+# Python cache
+.pytest_cache/
+.mypy_cache/
+
+# Database files
+*.db
+*.sqlite3
+
+# IDE / Editor files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Coverage
+htmlcov/
+.coverage
+
+# Alembic
+backend/alembic/versions/__pycache__/
+
+# Uploads / media
+uploads/
+media/
+
+# Frontend testing
+coverage/
+
+# Temporary files
+*.tmp
+*.tempv
