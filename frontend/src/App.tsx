@@ -1,11 +1,17 @@
-
+import { Routes, Route } from "react-router-dom";
 import './App.css'
-
+import Home from "./pages/Home";
 function App() {
   return (
-    <div className="text-3xl font-bold text-blue-600">
-      አቋራጭ Bus Finder
-    </div>
+    <Routes>
+      <Route
+      path="/"
+      element={<Home/>}
+      
+      
+      
+      />
+    </Routes>
   )
 }
 
