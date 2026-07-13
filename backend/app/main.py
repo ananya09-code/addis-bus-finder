@@ -2,7 +2,7 @@
 
 from fastapi import FastAPI
 from pydantic import BaseModel
-from routinglogic.find_rote import find_buse
+from routinglogic.plan import plan_trip
 from fastapi.middleware.cors import CORSMiddleware\
 
 
@@ -27,8 +27,10 @@ class Data(BaseModel):
 def home(data: Data):
     start = data.start
     end = data.end
+    if start=="" or end=="":
+        return {"message":"no data sent"}
     
     # Remove 'await' if find_buse is a normal function
-    result = find_buse(start, end) 
+    result = plan_trip(start,end)
     
     return result   

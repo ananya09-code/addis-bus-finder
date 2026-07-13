@@ -1,5 +1,3 @@
-from routinglogic.plan import plan_trip
-
-result = plan_trip("anfo", "mexico")                     # text -> text
-
-print(result)
+from routinglogic.load import shapes,trips
+print(trips.columns)
+print(trips.head())

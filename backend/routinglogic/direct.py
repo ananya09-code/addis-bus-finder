@@ -9,6 +9,7 @@ answer to compute -- no point running a full graph search for it.
 """
 
 from routinglogic.load import stops, routes, trips, stop_times
+from routinglogic.shapes import get_trip_shape
 
 
 def find_direct_routes(start_candidates, end_candidates):
@@ -81,6 +82,7 @@ def find_direct_routes(start_candidates, end_candidates):
                 "alight_stop": stop_list[-1],
                 "stop_count": len(stop_list),
                 "stops": stop_list,
+                "geometry": get_trip_shape(trip_id),
             }],
         })
 

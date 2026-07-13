@@ -19,6 +19,7 @@ stops = pd.read_csv(os.path.join(BASE, "stops.txt"), dtype=str)
 routes = pd.read_csv(os.path.join(BASE, "routes.txt"), dtype=str)
 trips = pd.read_csv(os.path.join(BASE, "trips.txt"), dtype=str)
 stop_times = pd.read_csv(os.path.join(BASE, "stop_times.txt"), dtype=str)
+shapes=pd.read_csv(os.path.join(BASE, "shapes.txt"), dtype=str)
 frequencies = pd.read_csv(os.path.join(BASE, "frequencies.txt"), dtype=str)
 
 # --- numeric conversions -----------------------------------------------

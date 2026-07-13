@@ -1,12 +1,15 @@
 import Button from "../layouts/Button";
-import Routecard from "../layouts/RouteCard";
+
 import {getData} from "../apicall/api.ts"
 import { useState } from "react";
 type sentdata={
   start:string;
   end:string
 }
-function LocationInput() {
+type locprop={
+  resdata:any;
+}
+function LocationInput({resdata}:locprop) {
   const[form,setform]=useState({
     start:"",
     end:""
@@ -26,10 +29,11 @@ function LocationInput() {
 
 
 
-  const data=async (godata:sentdata):Promise<any> =>{
+  const HandleSubmit=async (godata:sentdata):Promise<any> =>{
     try {
        const res=await getData(godata)
        console.log(res)
+       resdata(res)
     } catch (error) {
       console.log(error)
     }         
@@ -70,12 +74,11 @@ function LocationInput() {
       </div>
       <div className="flex flex-col gap-3 p-4">
       <Button text="use my location" style=" bg-green-500 hover:bg-green-400" ></Button>
-       <Button text="Search route ->" style=" bg-red-500 hover:bg-red-400"  ></Button>
-       <button className="bg-red-400" onClick={()=>data(form)}>send</button>
+       <Button text="Search route ->" style=" bg-red-500 hover:bg-red-400" onClick={()=>HandleSubmit(form)} ></Button>
+     
       </div>
       {}
-      
-      <Routecard busNum="AB105" start="anfo" end="legaher"/>
+
      
 
     </div>

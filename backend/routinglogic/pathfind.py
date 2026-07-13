@@ -137,16 +137,25 @@ def _build_itinerary(node_path, objective):
 
 
 def _finalize_ride_leg(ride_leg):
-    """Attaches route names, board/alight summary, and stop_count to a grouped ride leg."""
+    """Attaches route names, board/alight summary, and geometry."""
+
     from routinglogic.load import routes_by_id
+    from routinglogic.shapes import get_trip_shape
+
     route_row = routes_by_id.loc[ride_leg["route_id"]]
+
     ride_leg["route_short_name"] = str(route_row["route_short_name"])
     ride_leg["route_long_name"] = str(route_row["route_long_name"])
+
     ride_leg["board_stop"] = ride_leg["stops"][0]
     ride_leg["alight_stop"] = ride_leg["stops"][-1]
+
     ride_leg["stop_count"] = len(ride_leg["stops"])
 
-
+    # Add real bus road path
+    ride_leg["geometry"] = get_trip_shape(
+        ride_leg["trip_id"]
+    )
 def _stop_info(stop_id):
     from routinglogic.load import stops_by_id
     row = stops_by_id.loc[stop_id]

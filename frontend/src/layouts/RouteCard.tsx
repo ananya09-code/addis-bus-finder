@@ -1,15 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBus } from "@fortawesome/free-solid-svg-icons";
 
+
 type RouteCardProps = {
   busNum: string;
-  start: string;
-  end: string;
+  name:string;
+  onselect:boolean;
 };
 
-function RouteCard({ busNum, start, end }: RouteCardProps) {
+function RouteCard({ busNum, name,onselect }: RouteCardProps) {
+ 
+
   return (
-    <div className="flex flex-col gap-3 rounded-xl bg-white p-4 shadow-md">
+    <div className={`flex flex-col gap-3 rounded-xl bg-white p-4 shadow-md ${onselect
+      ? "border-2 border-red-600 bg-blue-50 shadow-lg"
+      : "border border-gray-300 bg-white hover:shadow-md"}`}
+       >
       {/* Bus Number */}
       <div className="flex items-center gap-2 text-lg font-bold text-red-600">
         <FontAwesomeIcon icon={faBus} />
@@ -18,17 +24,7 @@ function RouteCard({ busNum, start, end }: RouteCardProps) {
 
       {/* Route */}
       <div className="flex items-center justify-between  rounded-lg bg-gray-50 p-3 text-sm">
-        <div className="font-medium text-gray-800">
-          {start}
-        </div>
-
-        <span className="px-3 text-xl text-gray-400">
-          ⟷
-        </span>
-
-        <div className="font-medium text-gray-800">
-          {end}
-        </div>
+        {name}
       </div>
     </div>
   );
